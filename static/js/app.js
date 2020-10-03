@@ -82,21 +82,26 @@ function DrawBubbleChart(sampleId) {
     // define variables from array content
     var otu_ids = result.otu_ids;
     var sample_values = result.sample_values;
+    var otu_labels = result.otu_labels
 
     
     var bubbleChart = {
         x: otu_ids,
         y: sample_values.slice(0,10),
+        text: otu_labels,
         mode: 'markers',
         marker : {
-            size: [sample_values.slice(0,10)*10] 
+            size: sample_values.slice(0,10),
+            color: otu_ids,
+            colorscale: 'Portland' 
         }
     };
 
     var bubbleLayout = {
         title: 'Bacteria Cultures Found',
         height: {autorange: true},
-        width: {autorange: true}
+        width: {autorange: true},
+        hovermode: "closest"
     }
 
     Plotly.newPlot("bubble", [bubbleChart], bubbleLayout);
