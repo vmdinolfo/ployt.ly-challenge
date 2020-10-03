@@ -60,6 +60,16 @@ function DrawBargraph(sampleId) {
         // Define layout for Bargraph
         var barLayout = {
             title: "Top 10 Bacteria Cultures Found",
+            yaxis: {
+                title: {
+                    text: 'OTU Label'
+                }
+            },
+            xaxis: {
+                title: {
+                    text: 'Sample Size'
+                }
+            },
             margin: {t: 30, l:150}
         }
         // plot Bargraph
@@ -87,11 +97,11 @@ function DrawBubbleChart(sampleId) {
     
     var bubbleChart = {
         x: otu_ids,
-        y: sample_values.slice(0,10),
+        y: sample_values,
         text: otu_labels,
         mode: 'markers',
         marker : {
-            size: sample_values.slice(0,10),
+            size: sample_values,
             color: otu_ids,
             colorscale: 'Portland' 
         }
@@ -99,6 +109,15 @@ function DrawBubbleChart(sampleId) {
 
     var bubbleLayout = {
         title: 'Bacteria Cultures Found',
+        xaxis: {
+            title : {
+                text: 'OTU ID' }
+            },
+        yaxis: {
+            title: {
+                text: 'Sample Size'
+            }
+        },
         height: {autorange: true},
         width: {autorange: true},
         hovermode: "closest"
