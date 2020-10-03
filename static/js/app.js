@@ -76,12 +76,14 @@ function DrawBubbleChart(sampleId) {
     var samples = data.samples;
     // Pull data for SampleId selected in dropdown
     var resultArray = samples.filter(s => s.id == sampleId);
+    console.log(resultArray);
     // Access results of filtered array
     var result = resultArray[0];
     // define variables from array content
     var otu_ids = result.otu_ids;
     var sample_values = result.sample_values;
 
+    
     var bubbleChart = {
         x: otu_ids,
         y: sample_values.slice(0,10),
@@ -100,11 +102,6 @@ function DrawBubbleChart(sampleId) {
     Plotly.newPlot("bubble", [bubbleChart], bubbleLayout);
    });
 };
-
-function DrawGauge(SampleId){ 
-
-};
-
 
 function InitDashboard(){
     // select the selector to add data from json to dropdown
@@ -131,7 +128,6 @@ function InitDashboard(){
        
         DrawBargraph(sampleId);
         DrawBubbleChart(sampleId);
-        DrawGauge(sampleId);
     }); 
 };
 
